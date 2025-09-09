@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GENz - Protester Hub</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+</head>
+<body>
+<!-- Navbar -->
+<div class="navbar">
+  <img src="logo.png" alt="GENz Logo">
+  <input type="text" id="search" placeholder="Search GENz...">
+  <div>
+    <button onclick="openLogin()">Login</button>
+  </div>
+</div>
+
+<!-- Filters -->
+<div class="filters">
+  <button onclick="sortPosts('likes')">Top Liked</button>
+  <button onclick="sortPosts('shares')">Top Shared</button>
+  <button onclick="sortPosts('comments')">Most Commented</button>
+</div>
+
+<div class="container">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <button>🏠 Home</button>
+    <button>🔍 Explore</button>
+    <button>🔔 Notifications</button>
+    <button>⚖️ Legal Help</button>
+    <button>📢 Report Incident</button>
+  </div>
+
+  <!-- Feed & Profile -->
+  <div>
+    <!-- Profile Panel -->
+    <div class="profile-panel" id="profilePanel">
+      <h3>User Profile</h3>
+      <div class="profile-info">
+        <div class="avatar">AN</div>
+        <div class="details">
+          <div id="profileName">Anonymous</div>
+          <div id="profileHandle">@anonymous</div>
+        </div>
+      </div>
+      <h4>Your Posts</h4>
+      <div id="userPosts"></div>
+    </div>
+
+    <!-- Composer -->
+    <div class="composer">
+      <textarea id="postInput" placeholder="What's happening?"></textarea>
+      <input type="file" id="postMedia" accept="audio/*,video/*,image/*">
+      <button onclick="createPost()">Post</button>
+    </div>
+
+    <!-- Feed -->
+    <div id="feedPosts"></div>
+
+    <!-- Video Reels -->
+    <div class="reel-section">
+      <h3>Protester Video Reels</h3>
+      <div id="videoReels" class="reels-container"></div>
+    </div>
+  </div>
+
+  <!-- Rightbar -->
+  <div class="rightbar">
+    <h3>Trending Topics</h3>
+    <button>#GENz</button>
+    <button>#Nepal</button>
+    <button>#Protest</button>
+
+    <h3>Interactive Map</h3>
+    <div id="map"></div>
+
+    <h3>Emergency Contacts</h3>
+    <p>Police: 100</p>
+    <p>Ambulance: 102</p>
+    <p>Legal Aid: +977-XXXXXXX</p>
+
+    <h3>Resources</h3>
+    <button>First Aid Guides</button>
+    <button>Legal Help</button>
+    <button>Safe Zones Map</button>
+  </div>
+</div>
+
+<!-- Login Modal -->
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeLogin()">&times;</span>
+    <h2>Login / Anonymous</h2>
+    <input type="text" id="username" placeholder="Username (optional)">
+    <input type="password" id="password" placeholder="Password (optional)">
+    <button onclick="loginUser()">Login</button>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
